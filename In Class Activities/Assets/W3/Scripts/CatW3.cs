@@ -95,7 +95,7 @@ public class CatW3 : MonoBehaviour
             // Below this comment, CALL the method named DecreaseHealth.
             // Notice this method's return type is void- that means we don't
             //      have to store the result anywhere.
-            
+            DecreaseHealth();
 
             // STEP 2 ---------------------------------------------------------
 
@@ -129,13 +129,14 @@ public class CatW3 : MonoBehaviour
     private void DecreaseHealth()
     {
         // write Step 3 below this comment!
-
+        _health -= 1;
+        _healthText.text = "health = " + _health;   
 
         // STEP 5 -------------------------------------------------------------
         // Once you've finished Step 4, CALL the GetHealthSpeechText method
         //      and store the result in _speechText's text variable.
         // This will look very similar to the above line to change _healthText ;)
-
+        _speechText.text = GetHealthSpeechText();
 
         // STEP 5 -------------------------------------------------------------
     }
@@ -151,13 +152,18 @@ public class CatW3 : MonoBehaviour
     // Finally, fill out the method BODY. This method should:
     // 1. IF the value of _health is less than HALF of _maxHealth,
     //      return "OH NO!".
-    // 2. Otherwise, return "ouch".
+    private string GetHealthSpeechText()
+{
+    if (_health < _maxHealth / 2)
+    {
+        return "OH NO!";
+    }
+    return "ouch";
+}
 
-    //private ??? GetHealthSpeechText()
-    //{
-        // put the method body here!
+    
         
-    //}
+    
     
     // STEP 4 -----------------------------------------------------------------
 
@@ -168,7 +174,7 @@ public class CatW3 : MonoBehaviour
         // Set the value of the _spriteRenderer's color variable to the value
         //      of the ball's ballRenderer's color variable.
         // This means you'll need to use the '.' twice to get to the color :)
-
+        _spriteRenderer.color = ball.ballRenderer.color;
 
         // STEP 7 -------------------------------------------------------------
     }

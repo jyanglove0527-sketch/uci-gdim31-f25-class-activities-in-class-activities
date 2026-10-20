@@ -7,7 +7,8 @@ public class SoccerBall : MonoBehaviour
     [SerializeField] private TMP_Text _pointsText;
     [SerializeField] private TMP_Text _timeText;
     [SerializeField] private ParticleSystem _goalVFX;
-
+    private int _points = 0;
+    private float _timeSinceGoal = 0;
     // STEP 1 -----------------------------------------------------------------
     // The OnTriggerEnter method is a collision method called by Unity that
     //      tells our object when it's hit a collider with Is Trigger checked.
@@ -21,10 +22,13 @@ public class SoccerBall : MonoBehaviour
     //
     // Also, uncomment and FIX the Debug.Log line.
 
-    //private ?? ??
-    //{
+    private void OnTriggerEnter(Collider other)
+    {
         // finish STEP 1 by uncommenting and fixing the below line!
-        //Debug.Log(SoccerBall detected a collision with a trigger collider!);
+        if (other.gameObject.tag.Equals("Goal"))
+        {
+            MadeGoal();
+        }
 
         // STEP 2 -------------------------------------------------------------
         // Write an IF STATEMENT to check if the game object we collided with
@@ -36,7 +40,7 @@ public class SoccerBall : MonoBehaviour
 
 
         // STEP 2 -------------------------------------------------------------
-    //}
+    }
 
     // STEP 1 -----------------------------------------------------------------
 
@@ -45,7 +49,14 @@ public class SoccerBall : MonoBehaviour
     // Next, we're going to make a method named MadeGoal to call if the
     //      SoccerBall collided with an object tagged "Goal".
     // MadeGoal RETURNS NOTHING, and has NO INPUT.
-    // 
+    private void MadeGoal()
+    {
+        Debug.Log("Goal!");
+        _goalVFX.Play();
+        _points++;
+        _pointsText.text = "Points: " + _points;
+        _timeSinceGoal = 0;
+    }
     // Once you've created MadeGoal,
     //      move your Debug.Log() statement into MadeGoal, and
     //      call MadeGoal from inside your if statement in OnTriggerEnter.
@@ -83,7 +94,11 @@ public class SoccerBall : MonoBehaviour
     // STEP 6 -----------------------------------------------------------------
     // Like the last step, these flags do NOT show you where to put all of the
     //      code that you need to write.
-    //
+     private void Update()
+    {
+        _timeSinceGoal += Time.deltaTime;
+        _timeText.text = "Time since last goal: " + _timeSinceGoal;
+    }
     // We want to keep track of how long it's been since the last time the
     //      player scored a goal, and update _timeText with that time.
     // Your time variable should increase EVERY FRAME with how much TIME has 

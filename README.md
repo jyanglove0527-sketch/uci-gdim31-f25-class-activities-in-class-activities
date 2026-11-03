@@ -30,6 +30,11 @@ I added Rigidbodies to the Cat and the SoccerBall, because both of them need to 
 
 My game did not work perfectly the first time. I accidentally added the SphereCollider and BoxCollider to the Cat instead of the SoccerBall and Goal, so I removed them and added them to the right objects. I also added a Rigidbody to the Goal at first, but I removed it because the Goal doesn't need to move and it could fall through the ground. Finally, my changes didn't show up until I saved the Scene.
 
+### W5
+**Activity 1: DeerW5 plan** (Table 17)
+1. Member variables: The class needs one member variable, a Transform called _target. It has [SerializeField] so I can pick the GameObject the deer walks towards (like the red mushroom) in the Inspector.
+2. Methods: The class needs the Start() method, which Unity provides. We only need to tell the deer where to go once, when the game begins, so we don't need Update().
+3. What the method does: In Start(), the code uses GetComponent<NavMeshAgent>() to get the NavMeshAgent Component on the Deer. Then it calls SetDestination with _target.position, so the deer walks to the target using the NavMesh.
 ## Open-Source Assets
 ### W1
 - Animals: https://assetstore.unity.com/packages/3d/characters/animals/animals-free-animated-low-poly-3d-models-260727 

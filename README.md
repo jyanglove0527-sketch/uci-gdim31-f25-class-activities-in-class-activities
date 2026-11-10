@@ -35,6 +35,16 @@ My game did not work perfectly the first time. I accidentally added the SphereCo
 1. Member variables: The class needs one member variable, a Transform called _target. It has [SerializeField] so I can pick the GameObject the deer walks towards (like the red mushroom) in the Inspector.
 2. Methods: The class needs the Start() method, which Unity provides. We only need to tell the deer where to go once, when the game begins, so we don't need Update().
 3. What the method does: In Start(), the code uses GetComponent<NavMeshAgent>() to get the NavMeshAgent Component on the Deer. Then it calls SetDestination with _target.position, so the deer walks to the target using the NavMesh.
+
+### W7
+**Activity 1: Class resource guide** (worked solo)
+I worked on this solo, so I covered all five categories: Unity engine, Unity coding, General C# coding, Math, and Other tools.
+Google Doc: (https://docs.google.com/document/d/1TjnOc1VbgzegWC9C6DlKfWtkcqkQOYMobxgFTv75CLM/edit?usp=sharing)
+
+**Activity 2: BatW6 plan** (Table 17, pair programming)
+1. Member variables: a float _speed (tunable in the Inspector), a Transform _player for the cat the bat chases, and a bool _isChasing to remember if the bat is chasing right now.
+2. Methods: two public methods we write ourselves, StartChase() and StopChase(), so BatManager can call them. We also use Unity's Update() method.
+3. What they do: StartChase() sets _isChasing to true, and StopChase() sets it to false. Every frame, Update() checks _isChasing, and if it's true, the bat moves toward the player with Vector3.MoveTowards using _speed and Time.deltaTime.
 ## Open-Source Assets
 ### W1
 - Animals: https://assetstore.unity.com/packages/3d/characters/animals/animals-free-animated-low-poly-3d-models-260727 

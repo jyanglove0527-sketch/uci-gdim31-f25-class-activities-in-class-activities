@@ -41,11 +41,20 @@ My game did not work perfectly the first time. I accidentally added the SphereCo
 I worked on this solo, so I covered all five categories: Unity engine, Unity coding, General C# coding, Math, and Other tools.
 Google Doc: (https://docs.google.com/document/d/1TjnOc1VbgzegWC9C6DlKfWtkcqkQOYMobxgFTv75CLM/edit?usp=sharing)
 
+
+
 **Activity 2: BatW6 plan** (Table 17, pair programming)
 1. Member variables: a float _speed (tunable in the Inspector), a Transform _player for the cat the bat chases, and a bool _isChasing to remember if the bat is chasing right now.
 2. Methods: two public methods we write ourselves, StartChase() and StopChase(), so BatManager can call them. We also use Unity's Update() method.
 3. What they do: StartChase() sets _isChasing to true, and StopChase() sets it to false. Every frame, Update() checks _isChasing, and if it's true, the bat moves toward the player with Vector3.MoveTowards using _speed and Time.deltaTime.
+
+### W8
+**Activity 1** (Table 17)
+What was wrong with the code in Step 2: it used Vector3.forward, which is the forward direction in world space (always the Z axis). So the Muskrat always moved along the same world direction, even after it turned. I fixed it by using transform.forward, which is the Muskrat's own forward direction in object space, so it moves the way it's facing.
+
+I also had a problem where the Muskrat kept falling over and spinning. I fixed it by checking Freeze Rotation X, Y, and Z in the Rigidbody's Constraints. At first I accidentally checked Freeze Position, which stopped the Muskrat from jumping.
+
 ## Open-Source Assets
 ### W1
 - Animals: https://assetstore.unity.com/packages/3d/characters/animals/animals-free-animated-low-poly-3d-models-260727 
-- Low-poly environment: https://assetstore.unity.com/packages/3d/environments/landscapes/low-poly-simple-nature-pack-162153 ㄴss
+- Low-poly environment: https://assetstore.unity.com/packages/3d/environments/landscapes/low-poly-simple-nature-pack-162153 

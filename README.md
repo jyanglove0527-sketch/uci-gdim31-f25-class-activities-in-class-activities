@@ -54,6 +54,17 @@ What was wrong with the code in Step 2: it used Vector3.forward, which is the fo
 
 I also had a problem where the Muskrat kept falling over and spinning. I fixed it by checking Freeze Rotation X, Y, and Z in the Rigidbody's Constraints. At first I accidentally checked Freeze Position, which stopped the Muskrat from jumping.
 
+### W9
+**Activity 1: Planning the final** (Table 17, 2D final)
+- Google Drawing: https://docs.google.com/drawings/d/1VueSXfJZ0j5FzOOxjB7xZqciDOqmqtCt-GzcSZzlKcw/edit
+- My plan has 4 main GameObjects: the Cat (player), the Item (prefab), the GameManager/UI, and the Grid with Tilemaps.
+
+**Activity 2: Work on final**
+- Played both final options and chose the 2D final.
+- Read the Milestone 1 rubric.
+- Drew a breakdown of the GameObjects, their Components, and how they connect (the Cat kicks Items, and Items tell the UI, which keeps a List of required items).
+- Forked and cloned the 2D final project.
+
 ## Open-Source Assets
 ### W1
 - Animals: https://assetstore.unity.com/packages/3d/characters/animals/animals-free-animated-low-poly-3d-models-260727 
